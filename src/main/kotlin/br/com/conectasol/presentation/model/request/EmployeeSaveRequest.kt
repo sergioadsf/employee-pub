@@ -1,8 +1,10 @@
 package br.com.conectasol.presentation.model.request
 
 import br.com.conectasol.domain.command.EmployeeCommand
+import br.com.conectasol.domain.enum.EnumEmployeeCommand
 import io.micronaut.core.annotation.Introspected
 import java.math.BigDecimal
+import java.util.*
 import javax.validation.constraints.*
 
 @Introspected
@@ -21,6 +23,6 @@ data class EmployeeSaveRequest(
     val salary: BigDecimal
 ) {
     fun toCommand() = EmployeeCommand(
-        name, age, email, salary
+        UUID.randomUUID(), name, age, email, salary, EnumEmployeeCommand.REGISTER_NEW_EMPLOYEE
     )
 }
